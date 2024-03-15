@@ -1,0 +1,161 @@
+:root {
+    --primary: #0d6efd;
+    --primary-light: #6ea8fe;
+    --secondary: #6c757d;
+    --secondary-light: #ced4da;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --dark-light: #5d5d5e;
+}
+
+.primary-theme {
+    --main-bg-color: var(--light);
+    --button-bg-color: var(--primary);
+    --button-text-color: var(--light);
+    --border-color: var(--primary);
+    --arrow-color: var(--dark);
+    --option-hover-color: var(--primary-light);
+    --option-text-color: var(--light);
+    --option-selected-bg: var(--primary);
+    --option-selected-color: var(--light);
+    --option-selected-hover: var(--primary-light);
+}
+
+.secondary-theme {
+    --main-bg-color: var(--light);
+    --button-bg-color: var(--secondary);
+    --button-text-color: var(--light);
+    --border-color: var(--secondary);
+    --arrow-color: var(--dark);
+    --option-hover-color: var(--secondary-light);
+    --option-text-color: var(--light);
+    --option-selected-bg: var(--secondary);
+    --option-selected-color: var(--light);
+    --option-selected-hover: var(--secondary);
+}
+
+.light-theme {
+    --main-bg-color: var(--light);
+    --button-bg-color: var(--light);
+    --button-text-color: var(--dark);
+    --border-color: var(--dark);
+    --arrow-color: var(--dark);
+    --option-hover-color: var(--secondary-light);
+    --option-text-color: var(--dark);
+    --option-selected-bg: var(--secondary);
+    --option-selected-color: var(--dark);
+    --option-selected-hover: var(--secondary);
+}
+
+.dark-theme {
+    --main-bg-color: var(--dark);
+    --button-bg-color: var(--dark);
+    --button-text-color: var(--light);
+    --border-color: var(--secondary);
+    --arrow-color: var(--light);
+    --option-hover-color: var(--secondary);
+    --option-text-color: var(--light);
+    --option-selected-bg: var(--primary);
+    --option-selected-color: var(--light);
+    --option-selected-hover: var(--primary);
+}
+
+.selector {
+    position: relative;
+    width: 200px;
+    font-family: Arial, sans-serif;
+
+    &__button {
+        padding: 0.375rem 0.75rem;
+        background-color: var(--button-bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 0.25rem 0.25rem 0 0;
+        cursor: pointer;
+        user-select: none;
+        text-align: left;
+        color: var(--button-text-color);
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0.75rem;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 0.3em solid transparent;
+            border-right: 0.3em solid transparent;
+            border-top: 0.3em solid var(--arrow-color);
+            transition: transform 0.3s ease;
+        }
+
+        &.open::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+    }
+
+    &__dropdown {
+        box-sizing: border-box;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--main-bg-color);
+        border: 1px solid var(--border-color);
+        border-top: none;
+        border-radius: 0 0 0.25rem 0.25rem;
+        z-index: 1000;
+    }
+
+    &__search {
+        box-sizing: border-box;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        outline: none;
+        font-size: 1rem;
+        z-index: 1001;
+        background-color: var(--main-bg-color);
+        color: var(--button-text-color);
+
+        &::placeholder {
+            color: var(--button-text-color);
+        }
+    }
+
+    &__options {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    &__option {
+        display: flex;
+        align-items: center;
+        padding: 0.375rem 0.75rem;
+        cursor: pointer;
+        text-align: left;
+        color: var(--option-text-color);
+
+        &:hover {
+            background-color: var(--option-hover-color);
+        }
+
+        &--selected {
+            background-color: var(--option-selected-bg);
+            color: var(--option-selected-color);
+
+            &:hover {
+                background-color: var(--option-selected-hover);
+            }
+        }
+
+        &--icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+        }
+    }
+}
