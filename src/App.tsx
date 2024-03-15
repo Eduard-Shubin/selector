@@ -22,9 +22,9 @@ function App() {
     }
 
     return (
-        <>
+        <div>
             <Selector options={options} onChange={onChange} />
-        </>
+        </div>
     )
 }
 
