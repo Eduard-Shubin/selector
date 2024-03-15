@@ -27,7 +27,7 @@ function App() {
                 options={options}
                 onChange={onChange}
                 theme="primary"
-                size="sm"
+                size="md"
             />
         </>
     )
