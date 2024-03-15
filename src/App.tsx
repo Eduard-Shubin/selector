@@ -23,12 +23,7 @@ function App() {
 
     return (
         <>
-            <Selector
-                options={options}
-                onChange={onChange}
-                theme="primary"
-                size="md"
-            />
+            <Selector options={options} onChange={onChange} />
         </>
     )
 }

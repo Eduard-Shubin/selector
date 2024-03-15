@@ -7,11 +7,14 @@ import SelectorButton from './SelectorButton'
 import SearchInput from './SearchInput'
 import OptionList from './OptionsList'
 
+type Theme = 'light' | 'dark' | 'primary | secondary'
+type Size = 'sm' | 'md' | 'lg'
+
 type Props = {
     options: Options[]
     onChange: (option: Options[]) => void
-    theme?: string
-    size?: string
+    theme?: Theme
+    size?: Size
 }
 
 const Selector = ({ options, onChange, theme, size }: Props) => {
