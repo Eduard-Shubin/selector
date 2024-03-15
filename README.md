@@ -1,30 +1,47 @@
-# React + TypeScript + Vite
+## Installation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To run the project locally, follow these steps:
 
-Currently, two official plugins are available:
+1. Clone the repository.
+2. Install dependencies using `npm install` or `yarn install`.
+3. Start the project using `npm run dev` or `yarn dev`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Selector Component
 
-## Expanding the ESLint configuration
+The `Selector` component allows users to select one or multiple options from a list. It supports searching through the options and multiple selections.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Props
 
-- Configure the top-level `parserOptions` property like this:
+- `options`: An array of option objects, each of which must have a `label` field and can have an `icon` field.
+- `onChange`: A function that is called when the selected options change. It takes an array of selected options.
+- `theme`: Optionally, the styling theme of the component. Default is `light`.
+- `size`: Optionally, the size of the component. Default is `md`.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
+### Styling
+
+The `Selector` component uses SCSS for styling. You can customize the appearance of the component by modifying the theme and size variables.
+
+#### Themes
+
+- `primary`: The primary(Blue) theme of the project.
+- `secondary`: The secondary(Gray) theme of the project.
+- `light`: A light theme.(default)
+- `Dark`: A dark theme
+
+#### Sizes
+
+- `sm`: Small size.
+- `md`: Medium size (default).
+- `lg`: Large size
+
+### Usage Example
+
+```jsx
+import Selector from './components/Selector/Selector';
+
+function App() {
+  const options = [{ label: 'Option 1' }, { label: 'Option 2', icon: 'assets/icons/icon.svg }];
+  const onChange = (selectedOptions) => console.log(selectedOptions);
+
+  return <Selector options={options} onChange={onChange} theme="primary" size="sm" />;
 }
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
