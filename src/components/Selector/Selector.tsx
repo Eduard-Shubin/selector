@@ -6,10 +6,12 @@ import useOnFocusLost from '../../hooks/onFocusLost'
 
 type Props = {
     options: Options[]
-    onOptionChange: (option: Options[]) => void
+    onChange: (option: Options[]) => void
+    theme?: string
+    size?: string
 }
 
-const Selector = ({ options, onOptionChange }: Props) => {
+const Selector = ({ options, onChange, theme, size }: Props) => {
     const [searchTerm, setSearchTerm] = useState('')
     const [selectedOptions, setSelectedOptions] = useState<Options[]>([])
     const [isOpen, setIsOpen] = useState(false)
@@ -26,11 +28,11 @@ const Selector = ({ options, onOptionChange }: Props) => {
         if (index > -1) {
             const updatedOptions = selectedOptions.filter((_, i) => i !== index)
             setSelectedOptions(updatedOptions)
-            onOptionChange(updatedOptions)
+            onChange(updatedOptions)
         } else {
             const updatedOptions = [...selectedOptions, option]
             setSelectedOptions(updatedOptions)
-            onOptionChange(updatedOptions)
+            onChange(updatedOptions)
         }
     }
 
@@ -57,14 +59,17 @@ const Selector = ({ options, onOptionChange }: Props) => {
         setIsOpen(false)
     })
 
-    console.log(selectedOptions)
-
     const filteredOptions = options.filter((option) =>
         option.label.toLowerCase().includes(searchTerm.toLowerCase())
     )
 
     return (
-        <div className="selector dark-theme" ref={dropdownRef}>
+        <div
+            className={`selector ${theme ? theme : 'light'}-theme ${
+                size ? size : 'md'
+            }`}
+            ref={dropdownRef}
+        >
             <div
                 className={`selector__button ${isOpen ? 'open' : ''}`}
                 onClick={() => setIsOpen(!isOpen)}

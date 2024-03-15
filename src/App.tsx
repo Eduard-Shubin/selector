@@ -1,6 +1,6 @@
 import './App.css'
 import Selector from './components/Selector/Selector'
-import icon from './assets/angle-arrow-pointing-to-right.png'
+import icon from './assets/chevron_right_FILL0_wght400_GRAD0_opsz24.svg'
 import { Options } from './types/Options'
 
 function App() {
@@ -16,14 +16,19 @@ function App() {
         { label: 'Северная Корея' },
     ]
 
-    const onOptionChange = (selectedOptions: Options[]) => {
+    const onChange = (selectedOptions: Options[]) => {
         const selectedLabels = selectedOptions.map((option) => option.label)
         console.log(selectedLabels.join(', '))
     }
 
     return (
         <>
-            <Selector options={options} onOptionChange={onOptionChange} />
+            <Selector
+                options={options}
+                onChange={onChange}
+                theme="primary"
+                size="sm"
+            />
         </>
     )
 }
