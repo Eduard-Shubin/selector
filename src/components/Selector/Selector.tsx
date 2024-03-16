@@ -4,7 +4,7 @@ import './selectorStyles.scss'
 
 import useOnFocusLost from '../../hooks/onFocusLost'
 import SelectorButton from './SelectorButton'
-import SearchInput from './SearchInput'
+// import SearchInput from './SearchInput'
 import OptionList from './OptionsList'
 
 type Theme = 'light' | 'dark' | 'primary' | 'secondary'
@@ -38,19 +38,24 @@ const Selector = ({ options, onChange, theme, size }: Props) => {
                 selectedOptions={selectedOptions}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                setSelectedOptions={setSelectedOptions}
             />
             {isOpen && (
                 <div className="selector__dropdown">
-                    <SearchInput
+                    {/* <SearchInput
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
-                    />
+                    /> */}
                     <OptionList
                         options={options}
                         selectedOptions={selectedOptions}
                         setSelectedOptions={setSelectedOptions}
                         searchTerm={searchTerm}
                         onChange={onChange}
+                        isOpen={isOpen}
+                        setIsOpen={setIsOpen}
                     />
                 </div>
             )}

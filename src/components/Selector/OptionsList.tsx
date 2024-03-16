@@ -7,6 +7,8 @@ type Props = {
     searchTerm: string
     setSelectedOptions: (options: Option[]) => void
     onChange: (options: Option[]) => void
+    isOpen: boolean
+    setIsOpen: (isOpen: boolean) => void
 }
 
 const OptionList = ({
@@ -15,6 +17,8 @@ const OptionList = ({
     searchTerm,
     setSelectedOptions,
     onChange,
+    isOpen,
+    setIsOpen,
 }: Props) => {
     const handleOptionClick = (option: Option) => {
         if (selectedOptions.includes(option)) {
@@ -28,6 +32,7 @@ const OptionList = ({
             setSelectedOptions(updatedOptions)
             onChange(updatedOptions)
         }
+        setIsOpen(!isOpen)
     }
 
     const filteredOptions = options.filter((option) =>
