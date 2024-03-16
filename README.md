@@ -26,7 +26,7 @@ The `Selector` component uses SCSS for styling. You can customize the appearance
 - `primary`: The primary(Blue) theme of the project.
 - `secondary`: The secondary(Gray) theme of the project.
 - `light`: A light theme.(default)
-- `Dark`: A dark theme
+- `dark`: A dark theme
 
 #### Sizes
 
