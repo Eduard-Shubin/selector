@@ -1,7 +1,7 @@
-import { Options } from '../../types/Options'
+import { Option } from '../../types/Option'
 
 type Props = {
-    selectedOptions: Options[]
+    selectedOptions: Option[]
     setIsOpen: (isOpen: boolean) => void
     isOpen: boolean
 }

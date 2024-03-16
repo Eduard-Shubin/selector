@@ -1,12 +1,12 @@
 import OptionItem from './OptionItem'
-import { Options } from '../../types/Options'
+import { Option } from '../../types/Option'
 
 type Props = {
-    options: Options[]
-    selectedOptions: Options[]
+    options: Option[]
+    selectedOptions: Option[]
     searchTerm: string
-    setSelectedOptions: (options: Options[]) => void
-    onChange: (options: Options[]) => void
+    setSelectedOptions: (options: Option[]) => void
+    onChange: (options: Option[]) => void
 }
 
 const OptionList = ({
@@ -16,12 +16,11 @@ const OptionList = ({
     setSelectedOptions,
     onChange,
 }: Props) => {
-    const handleOptionClick = (option: Options) => {
-        const index = selectedOptions.findIndex(
-            (selectedOption) => selectedOption.label === option.label
-        )
-        if (index > -1) {
-            const updatedOptions = selectedOptions.filter((_, i) => i !== index)
+    const handleOptionClick = (option: Option) => {
+        if (selectedOptions.includes(option)) {
+            const updatedOptions = selectedOptions.filter(
+                (selectedOption) => selectedOption !== option
+            )
             setSelectedOptions(updatedOptions)
             onChange(updatedOptions)
         } else {
@@ -44,7 +43,6 @@ const OptionList = ({
                 <OptionItem
                     key={index}
                     option={option}
-                    index={index}
                     handleOptionClick={handleOptionClick}
                     selectedOptions={selectedOptions}
                 />

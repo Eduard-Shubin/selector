@@ -11,15 +11,13 @@ const SearchInput = ({ searchTerm, setSearchTerm }: Props) => {
     }
 
     return (
-        <>
-            <input
-                type="text"
-                value={searchTerm}
-                onChange={handleSearchChange}
-                placeholder="Поиск..."
-                className="selector__search"
-            />
-        </>
+        <input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder="Поиск..."
+            className="selector__search"
+        />
     )
 }
 

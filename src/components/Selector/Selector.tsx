@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { Options } from '../../types/Options'
+import { Option } from '../../types/Option'
 import './selectorStyles.scss'
 
 import useOnFocusLost from '../../hooks/onFocusLost'
@@ -7,19 +7,19 @@ import SelectorButton from './SelectorButton'
 import SearchInput from './SearchInput'
 import OptionList from './OptionsList'
 
-type Theme = 'light' | 'dark' | 'primary | secondary'
+type Theme = 'light' | 'dark' | 'primary' | 'secondary'
 type Size = 'sm' | 'md' | 'lg'
 
 type Props = {
-    options: Options[]
-    onChange: (option: Options[]) => void
+    options: Option[]
+    onChange: (option: Option[]) => void
     theme?: Theme
     size?: Size
 }
 
 const Selector = ({ options, onChange, theme, size }: Props) => {
     const [searchTerm, setSearchTerm] = useState('')
-    const [selectedOptions, setSelectedOptions] = useState<Options[]>([])
+    const [selectedOptions, setSelectedOptions] = useState<Option[]>([])
     const [isOpen, setIsOpen] = useState(false)
     const dropdownRef = useRef<HTMLDivElement>(null)
 

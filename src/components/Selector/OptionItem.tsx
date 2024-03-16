@@ -1,20 +1,14 @@
-import { Options } from '../../types/Options'
+import { Option } from '../../types/Option'
 type Props = {
-    option: Options
-    handleOptionClick: (option: Options) => void
-    selectedOptions: Options[]
-    index: number
+    option: Option
+    handleOptionClick: (option: Option) => void
+    selectedOptions: Option[]
 }
 
-const OptionItem = ({
-    option,
-    handleOptionClick,
-    selectedOptions,
-    index,
-}: Props) => {
+const OptionItem = ({ option, handleOptionClick, selectedOptions }: Props) => {
     const isOptionSelected = (
-        option: Options,
-        selectedOptions: Options[]
+        option: Option,
+        selectedOptions: Option[]
     ): boolean => {
         return selectedOptions.some(
             (selectedOption) => selectedOption.label === option.label
@@ -22,7 +16,6 @@ const OptionItem = ({
     }
     return (
         <div
-            key={index}
             onClick={() => handleOptionClick(option)}
             className={`selector__option ${
                 isOptionSelected(option, selectedOptions)

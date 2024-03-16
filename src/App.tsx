@@ -1,7 +1,7 @@
 import './App.css'
 import Selector from './components/Selector/Selector'
 import icon from './assets/chevron_right_FILL0_wght400_GRAD0_opsz24.svg'
-import { Options } from './types/Options'
+import { Option } from './types/Option'
 
 function App() {
     const options = [
@@ -16,7 +16,7 @@ function App() {
         { label: 'Северная Корея' },
     ]
 
-    const onChange = (selectedOptions: Options[]) => {
+    const onChange = (selectedOptions: Option[]) => {
         const selectedLabels = selectedOptions.map((option) => option.label)
         console.log(selectedLabels.join(', '))
     }
@@ -29,7 +29,7 @@ function App() {
                 justifyContent: 'center',
             }}
         >
-            <Selector options={options} onChange={onChange} />
+            <Selector options={options} theme="primary" onChange={onChange} />
         </div>
     )
 }
