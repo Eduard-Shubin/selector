@@ -1,22 +1,32 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useRef, useEffect } from 'react'
+import { useSelectorContext } from './SelectorContext'
 
-type Props = {
-    searchTerm: string
-    setSearchTerm: (searchTerm: string) => void
-}
+const SearchInput = () => {
+    const { isOpen, setIsOpen, searchTerm, setSearchTerm, setSearchInputRef } =
+        useSelectorContext()
 
-const SearchInput = ({ searchTerm, setSearchTerm }: Props) => {
+    const inputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        if (inputRef) {
+            setSearchInputRef(inputRef)
+        }
+    }, [inputRef, setSearchInputRef])
+
     const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+        if (!isOpen) {
+            setIsOpen(true)
+        }
         setSearchTerm(event.target.value)
     }
 
     return (
         <input
-            type="text"
+            ref={inputRef}
             value={searchTerm}
-            onChange={handleSearchChange}
-            placeholder="Поиск..."
-            className="selector__search"
+            type="text"
+            className="selector__button--search"
+            onChange={(event) => handleSearchChange(event)}
         />
     )
 }

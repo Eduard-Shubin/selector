@@ -1,38 +1,35 @@
 import OptionItem from './OptionItem'
 import { Option } from '../../types/Option'
+import { useSelectorContext } from './SelectorContext'
 
 type Props = {
     options: Option[]
-    selectedOptions: Option[]
-    searchTerm: string
-    setSelectedOptions: (options: Option[]) => void
-    onChange: (options: Option[]) => void
-    isOpen: boolean
-    setIsOpen: (isOpen: boolean) => void
 }
 
-const OptionList = ({
-    options,
-    selectedOptions,
-    searchTerm,
-    setSelectedOptions,
-    onChange,
-    isOpen,
-    setIsOpen,
-}: Props) => {
+const OptionList = ({ options }: Props) => {
+    const {
+        selectedOptions,
+        setSelectedOptions,
+        setIsOpen,
+        isOpen,
+        searchTerm,
+        setSearchTerm,
+        handleInputFocus,
+    } = useSelectorContext()
+
     const handleOptionClick = (option: Option) => {
         if (selectedOptions.includes(option)) {
             const updatedOptions = selectedOptions.filter(
                 (selectedOption) => selectedOption !== option
             )
             setSelectedOptions(updatedOptions)
-            onChange(updatedOptions)
         } else {
             const updatedOptions = [...selectedOptions, option]
             setSelectedOptions(updatedOptions)
-            onChange(updatedOptions)
         }
         setIsOpen(!isOpen)
+        setSearchTerm('')
+        handleInputFocus()
     }
 
     const filteredOptions = options.filter((option) =>

@@ -1,5 +1,6 @@
 import './App.css'
 import Selector from './components/Selector/Selector'
+import { useState } from 'react'
 import icon from './assets/chevron_right_FILL0_wght400_GRAD0_opsz24.svg'
 import { Option } from './types/Option'
 
@@ -15,6 +16,11 @@ function App() {
         { label: 'Китай' },
         { label: 'Северная Корея' },
     ]
+    const [selectedTheme, setSelectedTheme] = useState('primary')
+    const [selectedSize, setSelectedSize] = useState('md')
+
+    const themes = ['primary', 'secondary', 'light', 'dark']
+    const sizes = ['sm', 'md', 'lg']
 
     const onChange = (selectedOptions: Option[]) => {
         const selectedLabels = selectedOptions.map((option) => option.label)
@@ -25,11 +31,48 @@ function App() {
         <div
             style={{
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
             }}
         >
-            <Selector options={options} theme="primary" onChange={onChange} />
+            <div>
+                {themes.map((theme) => {
+                    return (
+                        <label>
+                            <input
+                                type="radio"
+                                name="radio-group-theme"
+                                value={theme}
+                                checked={selectedTheme === theme}
+                                onChange={() => setSelectedTheme(theme)}
+                            />
+                            {theme}
+                        </label>
+                    )
+                })}
+            </div>
+            <div>
+                {sizes.map((size) => {
+                    return (
+                        <label>
+                            <input
+                                type="radio"
+                                name="radio-group-size"
+                                value={size}
+                                checked={selectedSize === size}
+                                onChange={() => setSelectedSize(size)}
+                            />
+                            {size}
+                        </label>
+                    )
+                })}
+            </div>
+            <Selector
+                options={options}
+                theme={selectedTheme}
+                size={selectedSize}
+                onChange={onChange}
+            />
         </div>
     )
 }

@@ -1,11 +1,13 @@
 :root {
     --primary: #0d6efd;
     --primary-light: #6ea8fe;
-    --secondary: #78818a;
-    --secondary-light: #ced4da;
+    --primary-dark: #084298;
+    --secondary: #959ca4;
+    --secondary-light: #d0d4d7;
+    --secondary-dark: #50555b;
     --light: #f8f9fa;
     --dark: #212529;
-    --dark-light: #5d5d5e;
+    --dark-light: #656566;
 }
 
 .primary-theme {
@@ -15,8 +17,14 @@
     --button-shadow-color: var(--primary);
     --border-color: var(--secondary-light);
     --arrow-color: var(--secondary-light);
-    --search-text-color: var(--dark);
+    --search-text-color: var(--light);
     --search-placeholder-color: var(--secondary);
+    --search-border-color: var(--primary-dark);
+    --search-border-color-focus: var(--primary-light);
+    --search-clear-icon: var(--primary-dark);
+    --search-clear-icon-hover-bg: var(--primary-light);
+    --delete-icon-color: var(--primary);
+    --delete-icon-color-hover: var(--primary-dark);
     --option-hover-color: var(--primary-light);
     --option-text-color: var(--dark);
     --option-selected-bg: var(--primary);
@@ -34,6 +42,12 @@
     --button-shadow-color: var(--secondary);
     --search-text-color: var(--dark);
     --search-placeholder-color: var(--secondary);
+    --search-border-color: var(--secondary-dark);
+    --search-border-color-focus: var(--secondary-light);
+    --search-clear-icon: var(--secondary-dark);
+    --search-clear-icon-hover-bg: var(--secondary-light);
+    --delete-icon-color: var(--secondary);
+    --delete-icon-color-hover: var(--secondary-dark);
     --border-color: var(--secondary-light);
     --arrow-color: var(--dark);
     --option-hover-color: var(--secondary-light);
@@ -43,6 +57,7 @@
     --option-selected-hover: var(--secondary);
     --scrollbar-track: var(--secondary-light);
     --scrollbar-thumb: var(--secondary);
+    --selected-option-bg: var(--secondary-light);
 }
 
 .light-theme {
@@ -52,6 +67,12 @@
     --button-shadow-color: var(--secondary);
     --search-text-color: var(--dark);
     --search-placeholder-color: var(--secondary);
+    --search-border-color: var(--secondary-light);
+    --search-border-color-focus: var(--secondary);
+    --search-clear-icon: var(--secondary-dark);
+    --search-clear-icon-hover-bg: var(--secondary-light);
+    --delete-icon-color: var(--secondary);
+    --delete-icon-color-hover: var(--secondary-dark);
     --border-color: var(--secondary-light);
     --arrow-color: var(--dark);
     --option-hover-color: var(--secondary-light);
@@ -61,6 +82,7 @@
     --option-selected-hover: var(--secondary);
     --scrollbar-track: var(--secondary-light);
     --scrollbar-thumb: var(--secondary);
+    --selected-option-bg: var(--secondary-light);
 }
 
 .dark-theme {
@@ -70,36 +92,49 @@
     --button-shadow-color: var(--dark);
     --search-text-color: var(--light);
     --search-placeholder-color: var(--secondary);
+    --search-border-color: var(--dark-light);
+    --search-border-color-focus: var(--secondary-light);
+    --search-clear-icon: var(--light);
+    --search-clear-icon-hover-bg: var(--dark-light);
+    --delete-icon-color: var(--secondary);
+    --delete-icon-color-hover: var(--secondary-light);
     --border-color: var(--secondary);
     --arrow-color: var(--light);
     --option-hover-color: var(--secondary);
     --option-text-color: var(--light);
-    --option-selected-bg: var(--primary);
+    --option-selected-bg: var(--dark-light);
     --option-selected-color: var(--light);
-    --option-selected-hover: var(--primary);
+    --option-selected-hover: var(--dark-light);
     --scrollbar-track: var(--dark);
     --scrollbar-thumb: var(--secondary);
+    --selected-option-bg: var(--dark-light);
 }
 
 .sm {
     --font-size: 0.8rem;
-    --element-size: 11em;
-    --icon-size-w: 15px;
-    --icon-size-h: 15px;
+    --element-size: 12.5em;
+    --icon-size-w: 1rem;
+    --icon-size-h: 1rem;
+    --delete-icon-size: 0.85rem;
+    --clear-icon-size: 1.1rem;
 }
 
 .md {
     --font-size: 1rem;
     --element-size: 15em;
-    --icon-size-w: 20px;
-    --icon-size-h: 20px;
+    --icon-size-w: 1.25rem;
+    --icon-size-h: 1.25rem;
+    --delete-icon-size: 1.25rem;
+    --clear-icon-size: 1.3rem;
 }
 
 .lg {
     --font-size: 1.2rem;
-    --element-size: 13em;
-    --icon-size-w: 25px;
-    --icon-size-h: 25px;
+    --element-size: 16em;
+    --icon-size-w: 1.5rem;
+    --icon-size-h: 1.5rem;
+    --delete-icon-size: 1.5rem;
+    --clear-icon-size: 1.5rem;
 }
 
 .selector {
@@ -130,7 +165,7 @@
             flex-wrap: wrap;
             width: calc(100% - 2.5rem);
             padding-bottom: 0.2rem;
-            // border-bottom: 1px solid black;
+
             &::after {
                 content: '';
                 position: absolute;
@@ -138,7 +173,7 @@
                 left: 0;
                 right: 0;
                 height: 1px;
-                background-color: black;
+                background-color: var(--search-border-color);
                 transform: scaleX(1);
             }
 
@@ -149,7 +184,7 @@
                 left: 50%;
                 right: 50%;
                 height: 1px;
-                background-color: var(--primary-light);
+                background-color: var(--search-border-color-focus);
                 transition: left 0.3s ease, right 0.3s ease;
                 z-index: 1;
             }
@@ -182,27 +217,47 @@
             padding-left: 0.6rem;
             padding-right: 0.15rem;
             padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
             border-radius: 15px;
             background-color: var(--selected-option-bg);
             margin: 1px;
             align-items: center;
+            color: var(--search-text-color);
+        }
+
+        &--selected-option-text {
+            display: inline-block;
+            max-width: 100%;
         }
 
         &--delete-icon {
             display: inline-flex;
-            height: 1.35rem;
-            width: 1.35rem;
-            margin-left: 0.2rem;
+            height: var(--delete-icon-size);
+            width: var(--delete-icon-size);
+            margin-left: 0.1rem;
             cursor: pointer;
             pointer-events: all;
             z-index: 1003;
+            fill: var(--delete-icon-color);
+            transition: fill 0.3s ease;
+
+            &:hover {
+                fill: var(--delete-icon-color-hover);
+            }
         }
 
         &--clear-icon {
             position: absolute;
             right: 1.5rem;
-            height: 1.25rem;
-            width: 1.25rem;
+            height: var(--clear-icon-size);
+            width: var(--clear-icon-size);
+            border-radius: 50%;
+            fill: var(--search-clear-icon);
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: var(--search-clear-icon-hover-bg);
+            }
         }
 
         &::after {
@@ -233,7 +288,7 @@
         position: absolute;
         top: 100%;
         left: 0;
-        margin-top: 1%;
+        margin-top: 0.3rem;
         width: 100%;
         background-color: var(--main-bg-color);
         border: 1px solid var(--border-color);
