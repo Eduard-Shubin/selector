@@ -1,7 +1,7 @@
 import './App.css'
 import Selector from './components/Selector/Selector'
 import { useState } from 'react'
-import icon from './assets/chevron_right_FILL0_wght400_GRAD0_opsz24.svg'
+import icon from './assets/arrow_forward_FILL0_wght400_GRAD0_opsz24.svg'
 import { Option } from './types/Option'
 
 function App() {
@@ -10,11 +10,10 @@ function App() {
             label: 'Россия',
             icon: icon,
         },
-        { label: 'Армения' },
+        { label: 'Армения', icon: icon },
         { label: 'Казахстан', icon: icon },
-        { label: 'Узбекистан', icon: icon },
+        { label: 'Узбекистан' },
         { label: 'Китай' },
-        { label: 'Северная Корея' },
     ]
     const [selectedTheme, setSelectedTheme] = useState('primary')
     const [selectedSize, setSelectedSize] = useState('md')
