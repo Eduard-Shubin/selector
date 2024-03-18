@@ -26,7 +26,7 @@ const OptionList = ({ options }: Props) => {
         } else {
             const updatedOptions = [...selectedOptions, option]
             setSelectedOptions(updatedOptions)
-            // setSelectedOptions((prev) => [...prev, option])
+
         }
         setIsOpen(!isOpen)
         setSearchTerm('')

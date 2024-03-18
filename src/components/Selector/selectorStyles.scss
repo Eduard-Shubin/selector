@@ -275,7 +275,7 @@
         }
 
         &.open {
-            box-shadow: 0px 0px 5px 3px var(--button-shadow-color);
+            box-shadow: 0 0 5px 3px var(--button-shadow-color);
         }
 
         &.open::after {
