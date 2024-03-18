@@ -50,5 +50,5 @@ function App() {
   const options = [{ label: 'Option 1' }, { label: 'Option 2', icon: 'assets/icons/icon.svg }];
   const onChange = (selectedOptions) => console.log(selectedOptions);
 
-  return &lt;Selector options={options} onChange={onChange} theme="primary" size="sm" /&gt;;
+  return <Selector options={options} onChange={onChange} theme="primary" size="sm" />;;
 }
