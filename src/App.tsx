@@ -24,13 +24,10 @@ function App() {
             style={{
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'center',
             }}
         >
-
-            <Selector
-                options={options}
-                onChange={onChange}
-            />
+            <Selector options={options} onChange={onChange} />
         </div>
     )
 }
