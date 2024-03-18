@@ -1,3 +1,7 @@
+# Project Overview
+
+This project includes a React component named `Selector` designed for selecting one or multiple options from a list. The component supports searching through the options and allows for multiple selections.
+
 ## Installation
 
 To run the project locally, follow these steps:
@@ -6,33 +10,36 @@ To run the project locally, follow these steps:
 2. Install dependencies using `npm install` or `yarn install`.
 3. Start the project using `npm run dev` or `yarn dev`.
 
-## Selector Component
+## Features
 
-The `Selector` component allows users to select one or multiple options from a list. It supports searching through the options and multiple selections.
+- **Selector Component**: Enables users to select options from a dropdown list. It supports searching and multiple selections.
+- **Customizable Themes**: Comes with pre-defined themes (primary, secondary, light, dark) and sizes (sm, md, lg) for customization.
+
+## Selector Component
 
 ### Props
 
-- `options`: An array of option objects, each of which must have a `label` field and can have an `icon` field.
-- `onChange`: A function that is called when the selected options change. It takes an array of selected options.
-- `theme`: Optionally, the styling theme of the component. Default is `light`.
-- `size`: Optionally, the size of the component. Default is `md`.
+- `options`: An array of option objects, where each object must include a `label` and can optionally include an `icon`.
+- `onChange`: A function that is called when the selected options change. It receives an array of the selected options as its parameter.
+- `theme`: Optionally, the styling theme of the component. Defaults to `light`.
+- `size`: Optionally, the size of the component. Defaults to `md`.
 
 ### Styling
 
-The `Selector` component uses SCSS for styling. You can customize the appearance of the component by modifying the theme and size variables.
+The Selector component utilizes SCSS for styling. You can customize the appearance by modifying the theme and size variables.
 
 #### Themes
 
-- `primary`: The primary(Blue) theme of the project.
-- `secondary`: The secondary(Gray) theme of the project.
-- `light`: A light theme.(default)
-- `dark`: A dark theme
+- `primary`: The primary (Blue) theme.
+- `secondary`: The secondary (Gray) theme.
+- `light`: A light theme (default).
+- `dark`: A dark theme.
 
 #### Sizes
 
 - `sm`: Small size.
 - `md`: Medium size (default).
-- `lg`: Large size
+- `lg`: Large size.
 
 ### Usage Example
 
@@ -43,5 +50,5 @@ function App() {
   const options = [{ label: 'Option 1' }, { label: 'Option 2', icon: 'assets/icons/icon.svg }];
   const onChange = (selectedOptions) => console.log(selectedOptions);
 
-  return <Selector options={options} onChange={onChange} theme="primary" size="sm" />;
+  return <Selector options={options} onChange={onChange} theme="primary" size="sm" />;;
 }
