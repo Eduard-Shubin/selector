@@ -1,9 +1,9 @@
 import { Option } from '../../types/Option'
-import './selectorStyles.scss'
+import './Styles/selectorStyles.scss'
 
-import SelectorBase from './SelectorBase'
-import SelectorDropdown from './SelectorDropdown'
-import { SelectorProvider } from './SelectorContext'
+import SelectorBase from './SelectorBase/SelectorBase'
+import SelectorDropdown from './SelectorDropdown/SelectorDropdown'
+import { SelectorProvider } from './SelectorContext/SelectorContext'
 
 type Theme = 'light' | 'dark' | 'primary' | 'secondary'
 type Size = 'sm' | 'md' | 'lg'
@@ -17,7 +17,7 @@ type Props = {
 
 const Selector = ({ options, onChange, theme, size }: Props) => {
     return (
-        <SelectorProvider options={options} onChange={onChange}>
+        <SelectorProvider options={options} onChange={onChange} size={size}>
             <div
                 className={`selector ${theme ? theme : 'light'}-theme ${
                     size ? size : 'md'

@@ -8,8 +8,8 @@ import {
     useEffect,
     RefObject,
 } from 'react'
-import { Option } from '../../types/Option'
-import useOnFocusLost from '../../hooks/onFocusLost'
+import { Option } from '../../../types/Option'
+import useOnFocusLost from '../hooks/onFocusLost'
 
 interface SelectorContextValue {
     searchTerm: string
@@ -23,16 +23,23 @@ interface SelectorContextValue {
     searchInputRef: RefObject<HTMLInputElement> | null
     setSearchInputRef: (ref: RefObject<HTMLInputElement> | null) => void
     handleInputFocus: () => void
+    size: string | undefined
 }
 type Props = {
     children: ReactNode
     options: Option[]
     onChange(selectedOptions: Option[]): void
+    size: string | undefined
 }
 
 const SelectorContext = createContext<SelectorContextValue | null>(null)
 
-export const SelectorProvider = ({ children, options, onChange }: Props) => {
+export const SelectorProvider = ({
+    children,
+    options,
+    onChange,
+    size,
+}: Props) => {
     const [searchTerm, setSearchTerm] = useState('')
     const [selectedOptions, setSelectedOptions] = useState<Option[]>([])
     const [isOpen, setIsOpen] = useState(false)
@@ -80,6 +87,7 @@ export const SelectorProvider = ({ children, options, onChange }: Props) => {
                 searchInputRef,
                 setSearchInputRef,
                 handleInputFocus,
+                size,
             }}
         >
             <div ref={dropDownRef}>{children}</div>

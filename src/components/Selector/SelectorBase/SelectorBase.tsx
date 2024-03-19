@@ -1,8 +1,9 @@
 import { MouseEvent } from 'react'
-import { Option } from '../../types/Option'
-import { useSelectorContext } from './SelectorContext'
-import SelectedOption from './SelectedOption'
-import SearchInput from './SearchInput'
+import { Option } from '../../../types/Option'
+import { useSelectorContext } from '../SelectorContext/SelectorContext'
+import SelectedOption from '../SelectedOptions/SelectedOption'
+import SearchInput from '../SearchInput/SearchInput'
+import clearIcon from '../../../assets/close_FILL0_wght400_GRAD0_opsz24.svg'
 
 const SelectorBase = () => {
     const {
@@ -15,7 +16,7 @@ const SelectorBase = () => {
 
     const handleDeleteClick = (
         option: Option,
-        event: MouseEvent<SVGSVGElement>
+        event: MouseEvent<HTMLDivElement>
     ) => {
         event.stopPropagation()
         const updatedOptions = selectedOptions.filter(
@@ -26,7 +27,7 @@ const SelectorBase = () => {
         setIsOpen(true)
     }
 
-    const handleClearClick = (event: MouseEvent<SVGSVGElement>) => {
+    const handleClearClick = (event: MouseEvent<HTMLDivElement>) => {
         event.stopPropagation()
         setSelectedOptions([])
         handleInputFocus()
@@ -54,16 +55,16 @@ const SelectorBase = () => {
                 <SearchInput />
             </div>
             {selectedOptions.length > 0 ? (
-                <svg
+                <div
                     className="selector__button--clear-icon"
                     onClick={(event) => handleClearClick(event)}
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24"
-                    viewBox="0 -960 960 960"
-                    width="24"
                 >
-                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-                </svg>
+                    <img
+                        src={clearIcon}
+                        className="selector__button--clear-icon-image"
+                        alt="clear"
+                    />
+                </div>
             ) : null}
         </div>
     )

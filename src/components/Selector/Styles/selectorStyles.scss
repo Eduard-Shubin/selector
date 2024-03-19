@@ -1,11 +1,23 @@
 :root {
     --primary: #0d6efd;
+    --primary-filter: brightness(0) saturate(100%) invert(29%) sepia(99%)
+        saturate(2962%) hue-rotate(209deg) brightness(101%) contrast(99%);
     --primary-light: #6ea8fe;
     --primary-dark: #084298;
+    --primary-dark-filter: brightness(0) saturate(100%) invert(20%) sepia(53%)
+        saturate(2573%) hue-rotate(202deg) brightness(94%) contrast(104%);
     --secondary: #959ca4;
+    --secondary-filter: brightness(0) saturate(100%) invert(65%) sepia(16%)
+        saturate(164%) hue-rotate(171deg) brightness(93%) contrast(85%);
     --secondary-light: #d0d4d7;
+    --secondary-light-filter: brightness(0) saturate(100%) invert(82%) sepia(5%)
+        saturate(157%) hue-rotate(163deg) brightness(109%) contrast(81%);
     --secondary-dark: #50555b;
+    --secondary-dark-filter: brightness(0) saturate(100%) invert(30%) sepia(8%)
+        saturate(505%) hue-rotate(173deg) brightness(99%) contrast(87%);
     --light: #f8f9fa;
+    --light-filter: brightness(0) saturate(100%) invert(100%) sepia(17%)
+        saturate(2078%) hue-rotate(179deg) brightness(103%) contrast(95%);
     --dark: #212529;
     --dark-light: #656566;
 }
@@ -21,10 +33,10 @@
     --search-placeholder-color: var(--secondary);
     --search-border-color: var(--primary-dark);
     --search-border-color-focus: var(--primary-light);
-    --search-clear-icon: var(--primary-dark);
+    --search-clear-icon: var(--primary-dark-filter);
     --search-clear-icon-hover-bg: var(--primary-light);
-    --delete-icon-color: var(--primary);
-    --delete-icon-color-hover: var(--primary-dark);
+    --delete-icon-color: var(--primary-filter);
+    --delete-icon-color-hover: var(--primary-dark-filter);
     --option-hover-color: var(--primary-light);
     --option-text-color: var(--dark);
     --option-selected-bg: var(--primary);
@@ -44,10 +56,10 @@
     --search-placeholder-color: var(--secondary);
     --search-border-color: var(--secondary-dark);
     --search-border-color-focus: var(--secondary-light);
-    --search-clear-icon: var(--secondary-dark);
+    --search-clear-icon: var(--secondary-dark-filter);
     --search-clear-icon-hover-bg: var(--secondary-light);
-    --delete-icon-color: var(--secondary);
-    --delete-icon-color-hover: var(--secondary-dark);
+    --delete-icon-color: var(--secondary-filter);
+    --delete-icon-color-hover: var(--secondary-dark-filter);
     --border-color: var(--secondary-light);
     --arrow-color: var(--dark);
     --option-hover-color: var(--secondary-light);
@@ -69,10 +81,10 @@
     --search-placeholder-color: var(--secondary);
     --search-border-color: var(--secondary-light);
     --search-border-color-focus: var(--secondary);
-    --search-clear-icon: var(--secondary-dark);
+    --search-clear-icon: var(--secondary-dark-filter);
     --search-clear-icon-hover-bg: var(--secondary-light);
-    --delete-icon-color: var(--secondary);
-    --delete-icon-color-hover: var(--secondary-dark);
+    --delete-icon-color: var(--secondary-filter);
+    --delete-icon-color-hover: var(--secondary-dark-filter);
     --border-color: var(--secondary-light);
     --arrow-color: var(--dark);
     --option-hover-color: var(--secondary-light);
@@ -94,9 +106,9 @@
     --search-placeholder-color: var(--secondary);
     --search-border-color: var(--dark-light);
     --search-border-color-focus: var(--secondary-light);
-    --search-clear-icon: var(--light);
+    --search-clear-icon: var(--light-filter);
     --search-clear-icon-hover-bg: var(--dark-light);
-    --delete-icon-color: var(--secondary);
+    --delete-icon-color: var(--secondary-filter);
     --delete-icon-color-hover: var(--secondary-light);
     --border-color: var(--secondary);
     --arrow-color: var(--light);
@@ -218,11 +230,14 @@
             padding-right: 0.15rem;
             padding-top: 0.1rem;
             padding-bottom: 0.1rem;
+            max-width: 100%;
             border-radius: 15px;
             background-color: var(--selected-option-bg);
             margin: 1px;
             align-items: center;
             color: var(--search-text-color);
+            word-wrap: break-word;
+            hyphens: auto;
         }
 
         &--selected-option-text {
@@ -237,27 +252,37 @@
             margin-left: 0.1rem;
             cursor: pointer;
             pointer-events: all;
-            z-index: 1003;
-            fill: var(--delete-icon-color);
-            transition: fill 0.3s ease;
+            z-index: 1001;
+            filter: var(--delete-icon-color);
+            transition: filter 0.3s ease;
 
             &:hover {
-                fill: var(--delete-icon-color-hover);
+                filter: var(--delete-icon-color-hover);
             }
         }
 
         &--clear-icon {
             position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             right: 1.5rem;
             height: var(--clear-icon-size);
             width: var(--clear-icon-size);
             border-radius: 50%;
-            fill: var(--search-clear-icon);
-            transition: background-color 0.3s ease;
-
             &:hover {
                 background-color: var(--search-clear-icon-hover-bg);
             }
+        }
+
+        &--clear-icon-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+            filter: var(--search-clear-icon);
         }
 
         &::after {
@@ -293,11 +318,12 @@
         background-color: var(--main-bg-color);
         border: 1px solid var(--border-color);
         border-radius: 0.25rem;
-        z-index: 1000;
+        z-index: 1003;
     }
 
     &__options {
         max-height: 150px;
+        max-width: 100%;
         overflow-y: auto;
 
         &::-webkit-scrollbar {
@@ -320,6 +346,7 @@
 
     &__option {
         display: flex;
+        width: calc(100% - 0.8rem);
         align-items: center;
         padding: 0.375rem 0.3rem;
         margin-top: 0.1rem;
@@ -339,6 +366,13 @@
             &:hover {
                 background-color: var(--option-selected-hover);
             }
+        }
+
+        &--selected-text {
+            width: calc(100% - 1rem);
+            display: block;
+            word-wrap: break-word;
+            hyphens: auto;
         }
 
         &--icon {

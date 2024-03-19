@@ -25,6 +25,7 @@ function App() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                flexDirection: 'column',
             }}
         >
             <Selector options={options} onChange={onChange} />

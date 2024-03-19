@@ -1,5 +1,5 @@
 import { ChangeEvent, useRef, useEffect } from 'react'
-import { useSelectorContext } from './SelectorContext'
+import { useSelectorContext } from '../SelectorContext/SelectorContext'
 
 const SearchInput = () => {
     const { isOpen, setIsOpen, searchTerm, setSearchTerm, setSearchInputRef } =

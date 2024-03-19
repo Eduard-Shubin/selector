@@ -1,6 +1,6 @@
-import OptionItem from './OptionItem'
-import { Option } from '../../types/Option'
-import { useSelectorContext } from './SelectorContext'
+import OptionItem from '../OptionItem/OptionItem'
+import { Option } from '../../../types/Option'
+import { useSelectorContext } from '../SelectorContext/SelectorContext'
 
 type Props = {
     options: Option[]
@@ -26,7 +26,6 @@ const OptionList = ({ options }: Props) => {
         } else {
             const updatedOptions = [...selectedOptions, option]
             setSelectedOptions(updatedOptions)
-
         }
         setIsOpen(!isOpen)
         setSearchTerm('')

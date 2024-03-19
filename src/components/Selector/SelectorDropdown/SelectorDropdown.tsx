@@ -1,5 +1,5 @@
-import OptionList from './OptionsList'
-import { useSelectorContext } from './SelectorContext'
+import OptionList from '../OptionList/OptionsList'
+import { useSelectorContext } from '../SelectorContext/SelectorContext'
 
 const SelectorDropdown = () => {
     const { isOpen, options } = useSelectorContext()

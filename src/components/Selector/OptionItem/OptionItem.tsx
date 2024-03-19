@@ -1,4 +1,4 @@
-import { Option } from '../../types/Option'
+import { Option } from '../../../types/Option'
 type Props = {
     option: Option
     handleOptionClick: (option: Option) => void
@@ -16,6 +16,7 @@ const OptionItem = ({ option, handleOptionClick, selectedOptions }: Props) => {
     }
     return (
         <div
+            title={option.label}
             onClick={() => handleOptionClick(option)}
             className={`selector__option ${
                 isOptionSelected(option, selectedOptions)
@@ -30,8 +31,9 @@ const OptionItem = ({ option, handleOptionClick, selectedOptions }: Props) => {
                     className="selector__option--icon"
                 />
             )}
-
-            {option.label}
+            <div className="selector__option--selected-text">
+                {option.label}
+            </div>
         </div>
     )
 }
